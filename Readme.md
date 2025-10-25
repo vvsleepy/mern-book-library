@@ -1,4 +1,4 @@
-<div align="center">
+
 # 🌸 My Book Collection (MERN App)
 
 A pastel-themed full-stack **MERN Book Collection App** that allows users to create, view, edit, and delete books in a clean, aesthetic UI.  
