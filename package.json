@@ -4,7 +4,7 @@
   "main": "backend/index.js",
   "type": "module",
   "scripts": {
-    "install": "cd backend && npm install && cd ../client && npm install",
+    "postinstall": "cd backend && npm install && cd ../client && npm install",
     "build": "cd client && npm run build",
     "start": "node backend/index.js",
     "dev": "cd backend && nodemon index.js"
