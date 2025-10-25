@@ -9,33 +9,36 @@ import { fileURLToPath } from "url";
 
 const app = express();
 
-// Middleware to parse JSON
+// --------------------------------------------------
+// 🌿 Middleware
+// --------------------------------------------------
 app.use(express.json());
 app.use(cors());
 
-// API Routes
+// --------------------------------------------------
+// 📚 API Routes
+// --------------------------------------------------
 app.use("/api", booksRouter);
 
 // --------------------------------------------------
 // 🌸 Serve Frontend (React Build)
 // --------------------------------------------------
 
-// Get current directory path (since ES modules don't have __dirname)
+// These lines recreate __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Serve the React build files
+// Serve static files from the React build
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
-// For any other route, serve index.html from the React build
+// Handle all other routes by returning React’s index.html
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
 // --------------------------------------------------
-// 🌿 Connect to MongoDB and start the server
+// 🚀 Connect to MongoDB & Start Server
 // --------------------------------------------------
-
 mongoose
   .connect(MONGODB_URL)
   .then(() => {

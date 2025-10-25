@@ -17,8 +17,8 @@ const CreateBook = () => {
     const data = { title, author, publishYear };
     setLoading(true);
 
-    axios
-      .post("http://localhost:5001/api/books", data)
+    axios.post("https://mern-book-library-m0aa.onrender.com/api/books", data)
+
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book Created Successfully 💕", { variant: "success" });

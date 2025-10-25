@@ -12,13 +12,13 @@ const ShowBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5001/api/books/${id}`)
+      .get(`https://mern-book-library-m0aa.onrender.com/api/books/${id}`)
       .then((res) => {
         setBook(res.data);
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
         setLoading(false);
       });
   }, [id]);
@@ -26,6 +26,7 @@ const ShowBook = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100 p-6">
       <BackButton />
+
       <h1 className="text-4xl text-center font-semibold text-pink-700 my-8 tracking-wide drop-shadow-sm">
         📚 Book Details
       </h1>
@@ -33,11 +34,13 @@ const ShowBook = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="flex flex-col bg-white/80 backdrop-blur-md border border-pink-200 
-                        rounded-3xl shadow-lg shadow-pink-100 max-w-[600px] mx-auto p-8 text-gray-700">
+        <div
+          className="flex flex-col bg-white/80 backdrop-blur-md border border-pink-200 
+                     rounded-3xl shadow-lg shadow-pink-100 max-w-[600px] mx-auto p-8 text-gray-700"
+        >
           <div className="my-4">
             <span className="text-lg font-semibold text-pink-600 mr-3">📖 ID:</span>
-            <span className="text-lg">{book._id}</span>
+            <span className="text-lg break-words">{book._id}</span>
           </div>
 
           <div className="my-4">
